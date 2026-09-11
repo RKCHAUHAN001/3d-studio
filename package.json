@@ -1,0 +1,83 @@
+{
+  "name": "3d-studio",
+  "displayName": "3D Studio",
+  "description": "A professional 3D model viewer for GLB, GLTF, OBJ and STL files inside Visual Studio Code.",
+  "version": "0.0.4",
+  "publisher": "parivartya",
+  "author": {"name": "Parivartya Corporation","email": "parivartyacorporation@gmail.com","url": "https://parivartya.in"},
+  "license": "MIT",
+  "icon": "3D_Logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RKCHAUHAN001/3d-studio.git"
+},
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "3d",
+    "studio",
+    "model",
+    "viewer",
+    "glb",
+    "gltf",
+    "obj",
+    "stl",
+    "threejs"
+  ],
+  "activationEvents": [
+    ""
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "3d-studio.open",
+        "title": "3D Studio: Open Model"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "3d-studio.viewer",
+        "displayName": "3D Studio",
+        "selector": [
+          {
+            "filenamePattern": "*.glb"
+          },
+          {
+            "filenamePattern": "*.gltf"
+          },
+          {
+            "filenamePattern": "*.obj"
+          },
+          {
+            "filenamePattern": "*.stl"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "npm run build",
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npm run build && npx @vscode/vsce package",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/three": "0.185.1",
+    "@types/vscode": "^1.95.0",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "three": "0.185.1"
+  }
+}
